@@ -12,7 +12,7 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
-  let fetchCharacters = async () => {
+  let getCharacters = async () => {
     try {
       let response = await axios.get('https://swapi.co/api/people/'); 
       let character = response.data.results; 
@@ -24,18 +24,22 @@ const App = () => {
   }
 
   useEffect(() => {
-    fetchCharacters(); 
+    getCharacters(); 
   }, []); 
+
+ 
+
 
   if(character !== "") {
     return (
       <div className="App">
-        <h1 className="Header">React Wars 👩‍💻</h1>
+        <h1 className="Header">React Wars <span role="img" aria-label="girlcoding"> 👩‍💻 </span></h1>
         <div className="characterContainer">
-            character.map((character, key) => {
-              <CharacterCard key={key} character={character} />
-            })
-        </div>
+          {character.map((character, key) => {
+              return( 
+              <CharacterCard key={key} character={character} /> 
+          )})}; 
+          </div> 
       </div>
     );
   } else {
@@ -43,7 +47,7 @@ const App = () => {
       <div className="App">
        <h1 className="Header">React Wars</h1>
        <div className="loading">
-         <h2>Waiting for characters</h2>
+         <h2> Waiting for characters to Load. </h2>
        </div>
       </div>
     ); 

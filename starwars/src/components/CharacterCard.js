@@ -4,15 +4,13 @@ import React from "react";
 
 const CharacterCard = (props) => {
   return(
-    <div className="characterCard">
-      <h2>{props.character.name} </h2>
       <div className="info">
-        <p> Gender: {props.character.gender}</p>
-        <p> Birth Year: {props.character.birth_year}</p>
-        <p> Height: {props.character.height}</p>
-        <p> Mass: {props.character.mass}</p>
+        <h2>Name: {props.name} </h2>
+        <h3> Gender: {props.gender}</h3>
+        <h3> Birth Year: {props.birth_year}</h3>
+        <h3> Height: {props.height}</h3>
+        <h3> Mass: {props.mass}</h3>
       </div>
-    </div>
   );
 }
 
