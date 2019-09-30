@@ -4,12 +4,13 @@ import styled from "styled-components";
 import './App.css';
 import CharacterCard from "./components/CharacterCard.js"; 
 
-const CharacterCard = styled.div`
+let CardStyled = styled(CharacterCard)`
   padding: .05rem; 
   maring: 0.5rem;
   color: "palevioletred";
   border: 1px solid black;
 `
+
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -45,7 +46,8 @@ const App = () => {
         <div className="characterContainer">
           {character.map((character, key) => {
               return( 
-              <CharacterCard key={key} character={character} /> 
+              <CardStyled //key={key}
+               character={character} /> 
           )})}; 
           </div> 
       </div>
