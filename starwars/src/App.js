@@ -27,22 +27,27 @@ const App = () => {
     fetchCharacters(); 
   }, []); 
 
-  //  useEffect(() => {
-  //   axios
-  //  .get('http://swapi.co/api/people/');
-  //  .then(response => {
-  //    console.log(response.data); 
-  //    setCharacter(response.data); 
-  //  })
-  //  .catch(err => console.error(`Sorry no characters. ${err}`))
-
-  // }, [])
-  
-  return (
-    <div className="App">
-      <h1 className="Header">React Wars</h1>
-    </div>
-  );
+  if(character !== "") {
+    return (
+      <div className="App">
+        <h1 className="Header">React Wars 👩‍💻</h1>
+        <div className="characterContainer">
+            character.map((character, key) => {
+              <CharacterCard key={key} character={character} />
+            })
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="App">
+       <h1 className="Header">React Wars</h1>
+       <div className="loading">
+         <h2>Waiting for characters</h2>
+       </div>
+      </div>
+    ); 
+  }
 }
 
 export default App;
