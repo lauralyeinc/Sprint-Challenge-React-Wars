@@ -6,7 +6,7 @@ import CharacterCard from "./components/CharacterCard.js";
 
 let CardStyled = styled(CharacterCard)`
   padding: .05rem; 
-  maring: 0.5rem;
+  margin: 0.5rem;
   color: "palevioletred";
   border: 1px solid black;
 `
@@ -35,9 +35,6 @@ const App = () => {
   useEffect(() => {
     getCharacters(); 
   }, []); 
-
- 
-
 
   if(character !== "") {
     return (
