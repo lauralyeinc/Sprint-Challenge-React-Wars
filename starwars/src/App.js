@@ -22,7 +22,7 @@ const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
   
-  const [character, setCharacter] = useState("");
+  const [character, setCharacter] = useState([]);
 
   // Fetch characters from the star wars api in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
@@ -30,10 +30,9 @@ const App = () => {
 
   let getCharacters = async () => {
     try {
-      let response = await axios.get('https://swapi.co/api/people/'); 
-      console.log(response.data); 
-      let character = response.data.results; 
-      setCharacter(character); 
+      let res = await axios.get('https://swapi.co/api/people/'); 
+      console.log(res.data); 
+      setCharacter(res.data.results); 
     } catch(err) {
       console.log(`Sorry, no characters. ${err}`); 
     }
@@ -49,7 +48,7 @@ const App = () => {
         </HeaderStyle>
           return (
             <StyledDiv>
-              {character.map((key, data) => {             
+              {character.map((key, data) => {            
               <CharacterCard  id={key} character={data} /> 
               })}; 
           </StyledDiv>

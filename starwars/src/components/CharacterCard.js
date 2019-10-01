@@ -6,7 +6,7 @@ const CharacterCard = (props) => {
           <div 
             id ={props.key} character 
             className="info" class="row">
-            <h4 className="col-sm-4">Name: {props.character} </h4>
+            <h4 class="col-sm-4">Name: {props.character} </h4>
             {/* <h4 class="col-sm-4"> Gender: {props.gender}.</h4>
           </div>
         <div class="row">
