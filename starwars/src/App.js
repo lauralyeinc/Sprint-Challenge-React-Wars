@@ -4,11 +4,17 @@ import styled from "styled-components";
 import './App.css';
 import CharacterCard from "./components/CharacterCard.js"; 
 
-let CardStyled = styled(CharacterCard)`
+let StyledDiv = styled.div`
   padding: .05rem; 
   margin: 0.5rem;
   color: "palevioletred";
   border: 1px solid black;
+`; 
+
+let HeaderStyle = styled.h2`
+  color: black;
+  text-shadow: 1px 1px 5px #fff;
+  margin: 2rem;
 `
 
 
@@ -23,9 +29,9 @@ const App = () => {
 
   let getCharacters = async () => {
     try {
-      let data = await axios.get('https://swapi.co/api/people'); 
-      let character = data.data.results; 
-      console.log(data); 
+      let res = await axios.get('https://swapi.co/api/people/'); 
+      let character = res.data.results; 
+      console.log(res); 
       setCharacter(character); 
     } catch(err) {
       console.log(`Sorry, no characters. ${err}`); 
@@ -39,22 +45,23 @@ const App = () => {
   if(character !== "") {
     return (
       <div className="App">
-        <h1 className="Header">React Wars <span role="img" aria-label="girlcoding"> 👩‍💻 </span></h1>
-        <div className="characterContainer">
+        <HeaderStyle className="Header">React Wars <span role="img" aria-label="girlcoding"> 👩‍💻 </span>
+        </HeaderStyle>
+        <StyledDiv>
           {character.map((character, key) => {
               return( 
-              <CardStyled //key={key}
+              <CharacterCard id={key}
                character={character} /> 
           )})}; 
-          </div> 
-      </div>
+          </StyledDiv>
+        </div> 
     );
   } else {
     return (
       <div className="App">
-       <h1 className="Header">React Wars</h1>
+       <HeaderStyle className="Header">React Wars</HeaderStyle>
        <div className="loading">
-         <h2> Waiting for characters to Load. </h2>
+         <HeaderStyle> Waiting for characters to Load. </HeaderStyle>
        </div>
       </div>
     ); 
