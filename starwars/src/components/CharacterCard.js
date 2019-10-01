@@ -4,7 +4,7 @@ const CharacterCard = (props) => {
   return(
       <div class="container">
           <div 
-            //id ={key} 
+            id ={props.key} 
             className="info" class="row">
             <h4 className="col-sm-4">Name: {props.name} </h4>
             <h4 class="col-sm-4"> Gender: {props.gender}</h4>

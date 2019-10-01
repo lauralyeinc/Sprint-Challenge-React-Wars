@@ -21,6 +21,7 @@ let HeaderStyle = styled.h2`
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
+  const [data, setData] = useState(""); 
   const [character, setCharacter] = useState("");
 
   // Fetch characters from the star wars api in an effect hook. Remember, anytime you have a 
@@ -29,15 +30,14 @@ const App = () => {
 
   let getCharacters = async () => {
     try {
-      let res = await axios.get('https://swapi.co/api/people/'); 
-      let character = res.data.results; 
-      console.log(res); 
-      setCharacter(character); 
+      let response = await axios.get('https://swapi.co/api/people/'); 
+      console.log(response.data); 
+      let data = response.data.results; 
+      setData(data); 
     } catch(err) {
       console.log(`Sorry, no characters. ${err}`); 
     }
   }
-
   useEffect(() => {
     getCharacters(); 
   }, []); 
@@ -47,13 +47,13 @@ const App = () => {
       <div className="App">
         <HeaderStyle className="Header">React Wars <span role="img" aria-label="girlcoding"> 👩‍💻 </span>
         </HeaderStyle>
-        <StyledDiv>
-          {character.map((character, key) => {
-              return( 
-              <CharacterCard id={key}
-               character={character} /> 
-          )})}; 
+          return (
+            <StyledDiv>
+              {character.map((key, character) => {              
+              <CharacterCard  id={key} character={data} /> 
+          })}; 
           </StyledDiv>
+          )
         </div> 
     );
   } else {
