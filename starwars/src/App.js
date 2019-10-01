@@ -7,8 +7,8 @@ import CharacterCard from "./components/CharacterCard.js";
 let StyledDiv = styled.div`
   padding: .05rem; 
   margin: 0.5rem;
-  color: "palevioletred";
-  border: 1px solid black;
+  background-color: orange;
+  border: 2px dashed black;
 `; 
 
 let HeaderStyle = styled.h2`
